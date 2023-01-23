@@ -13,7 +13,9 @@ const config: Configuration = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].[contenthash].js",
-    publicPath: "https://MuhammadChandra19.github.io/animeql-list/",
+    publicPath: '/',
+    clean: true,
+    pathinfo: false,
   },
   module: {
     rules: [
@@ -39,6 +41,9 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "build/index.html",
+      inject: 'body',
+      hash: true,
+      minify: true,
     }),
     new ESLintPlugin({
       extensions: ["js", "jsx", "ts", "tsx"],

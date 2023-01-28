@@ -3,6 +3,7 @@ import { Configuration, container } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 const deps = require('./package.json').dependencies
 
 const ModuleFederationPlugin = container.ModuleFederationPlugin
@@ -51,35 +52,8 @@ const config: Configuration = {
       exposes: {
         "./AnimeList": "./src/views/AnimeList",
       },
-      shared: {
-        react: { 
-          requiredVersion: deps.react,
-          singleton: true,
-          eager: true
-        },
-        'react-dom': {
-          requiredVersion: deps['react-dom'],
-          singleton: true,
-          eager: true
-        },
-        '@emotion/styled': {
-          requiredVersion: deps['@emotion/styled'],
-          singleton: true,
-          eager: true
-        },
-        '@emotion/react': {
-          requiredVersion: deps['@emotion/react'],
-          singleton: true,
-          eager: true
-        },
-        '@emotion/cache': {
-          requiredVersion: deps['@emotion/cache'],
-          singleton: true,
-          eager: true
-        },
-      },
-    })
-    // new BundleAnalyzerPlugin()
+    }),
+    new BundleAnalyzerPlugin()
   ],
 };
 

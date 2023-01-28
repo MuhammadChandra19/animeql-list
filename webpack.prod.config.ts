@@ -49,10 +49,19 @@ const config: Configuration = {
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./AnimeList": "./src/views/AnimeList"
+        "./AnimeList": "./src/views/AnimeList",
       },
       shared: {
-        ...deps,
+        react: { 
+          requiredVersion: deps.react,
+          singleton: true,
+          eager: true
+        },
+        'react-dom': {
+          requiredVersion: deps['react-dom'],
+          singleton: true,
+          eager: true
+        },
         // react: { eager: true },
       },
     })

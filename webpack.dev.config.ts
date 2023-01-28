@@ -54,7 +54,16 @@ const config: Configuration = {
         "./AnimeList": "./src/views/AnimeList"
       },
       shared: {
-        ...deps,
+        react: { 
+          requiredVersion: deps.react,
+          singleton: true,
+          eager: true
+        },
+        'react-dom': {
+          requiredVersion: deps['react-dom'],
+          singleton: true,
+          eager: true
+        },
         // react: { eager: true },
       },
     })
@@ -64,7 +73,6 @@ const config: Configuration = {
     static: path.join(__dirname, "build"),
     historyApiFallback: true,
     port: 4001,
-    open: true,
     hot: true,
     headers: {
       "Access-Control-Allow-Origin": "*",

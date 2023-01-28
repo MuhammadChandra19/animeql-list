@@ -52,16 +52,7 @@ const config: Configuration = {
         "./AnimeList": "./src/views/AnimeList",
       },
       shared: {
-        react: { 
-          requiredVersion: deps.react,
-          singleton: true,
-          eager: true
-        },
-        'react-dom': {
-          requiredVersion: deps['react-dom'],
-          singleton: true,
-          eager: true
-        },
+       ...deps
         // react: { eager: true },
       },
     })
